@@ -1,6 +1,6 @@
 appName: myhelmapp
 
-namespace: default
+namespace: mywebapp-prd
 
 configmap:
   name: helmappconfigmapv1.1

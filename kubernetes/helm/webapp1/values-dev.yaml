@@ -1,6 +1,6 @@
 appName: myhelmapp
 
-namespace: default
+namespace: mywebapp-dev
 
 configmap:
   name: helmappconfigmapv1.1
