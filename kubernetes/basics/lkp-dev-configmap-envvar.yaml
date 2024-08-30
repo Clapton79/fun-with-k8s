@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmaptest
+  
+data:
+    name: Laci4
+    lives: "3"
+    my_filename: my_file.txt
+

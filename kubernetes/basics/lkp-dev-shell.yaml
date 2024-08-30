@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mypod
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: configmaptest
+  template:
+    metadata:
+      labels:
+        app: configmaptest
+    spec:
+      containers:
+      - name: nginxback
+        image: nginx:1.14.2
+        env:
+        - name: CONFIGMAP_LIVES
+          valueFrom:
+            configMapKeyRef:
+              name: configmaptest
+              key: lives
+        - name: CONFIGMAP_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: configmaptest
+              key: name
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        volumeMounts: 
+        - name: configmaptestmount
+          mountPath: /config
+      volumes:
+        - name: configmaptestmount
+          configMap: 
+            name: configmaptestmount
+
